@@ -1,0 +1,517 @@
+
+.container {
+    color: black;
+    min-height: 900px;
+    height: auto;
+    box-sizing: border-box;
+}
+
+/* SECTION TITLE */
+.title {
+    display: flex;
+    margin-top: 100px;
+    align-items: center;
+    justify-content: center;
+    gap: 70px;
+    padding: 0 20px;
+    box-sizing: border-box;
+
+    animation: shopFadeUp 0.8s ease-out both;
+}
+
+.title h2 {
+    font-family: Manrope, sans-serif;
+    font-size: clamp(42px, 6vw, 84px);
+    font-weight: 500;
+    line-height: .95;
+}
+
+.description {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    min-width: 0;
+}
+
+.description p {
+    margin: 0;
+    color: #606060;
+    font-size: 13px;
+    line-height: 1.7;
+}
+
+/* FILTER SECTION */
+.selectionWrapper {
+    margin: 40px 30px 0;
+    min-width: 0;
+    animation: shopFadeUp 0.8s ease-out 0.12s both;
+}
+
+.selection {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 28px 4px;
+    border-top: 1px solid #111;
+    border-bottom: 1px solid #ddd;
+}
+
+.searchField {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 0;
+}
+
+.filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* Shared filter button styling */
+.allBtn,
+.footwearBtn,
+.accessoriesBtn {
+    padding: 9px 16px;
+    border: 1px solid #d5d5d5;
+    border-radius: 100px;
+    background: #fff;
+    color: #111;
+    font-size: 10px;
+    white-space: nowrap;
+    cursor: pointer;
+    transition:
+        background 220ms ease,
+        color 220ms ease,
+        border-color 220ms ease,
+        transform 220ms ease;
+}
+
+.allBtn:hover,
+.footwearBtn:hover,
+.accessoriesBtn:hover {
+    border-color: #111;
+    transform: translateY(-2px);
+}
+
+/* Selected filter */
+.allBtn.active,
+.footwearBtn.active,
+.accessoriesBtn.active {
+    background: #080808;
+    border-color: #080808;
+    color: #fff;
+}
+
+/* PRODUCTS GRID */
+.productsWindow {
+    margin: 30px 30px 0;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 30px;
+    align-items: start;
+}
+
+/* PRODUCT CARD */
+.productCard {
+    width: 100%;
+    min-width: 0;
+    animation: shopFadeUp 0.65s ease-out both;
+}
+
+/* Stagger cards slightly */
+.productCard:nth-child(2n) {
+    animation-delay: 0.1s;
+}
+
+.productCard:nth-child(3n) {
+    animation-delay: 0.18s;
+}
+
+/* PRODUCT IMAGE */
+.productImage {
+    position: relative;
+    width: 100%;
+    height: 440px;
+    background: #f2f2f2;
+    overflow: hidden;
+}
+
+.productImage img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 650ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+/* Gentle image zoom */
+.productImage:hover img {
+    transform: scale(1.045);
+}
+
+/* Product ID label */
+.productImage span {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 2;
+    font-size: 12px;
+    color: #111;
+}
+
+/* ADD TO CART BUTTON */
+.productImage button {
+    color: #fff;
+    cursor: pointer;
+    opacity: 0;
+    background: #080808;
+    border: 0;
+    height: 46px;
+    font-size: 11px;
+
+    position: absolute;
+    bottom: 12px;
+    left: 12px;
+    right: 12px;
+    z-index: 2;
+
+    transform: translateY(12px);
+    transition:
+        opacity 220ms ease,
+        transform 220ms ease,
+        background 180ms ease;
+}
+
+/* Reveal button on hover */
+.productImage:hover button,
+.productImage:focus-within button {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.productImage button:hover {
+    background: #333;
+}
+
+/* PRODUCT DETAILS */
+.productData {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 12px;
+    padding-top: 16px;
+}
+
+.data1 {
+    min-width: 0;
+}
+
+.data1 h3 {
+    margin: 0 0 6px;
+    overflow-wrap: anywhere;
+}
+
+.data1 p {
+    margin: 0;
+    color: #606060;
+}
+
+.data2 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+/* ANIMATION */
+@keyframes shopFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+    .title,
+    .selectionWrapper,
+    .productCard {
+        animation: none;
+    }
+
+    .allBtn,
+    .footwearBtn,
+    .accessoriesBtn,
+    .productImage img,
+    .productImage button {
+        transition: none;
+    }
+}
+
+/* TOUCH DEVICES */
+@media (hover: none) {
+    .productImage button {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* TABLETS AND SMALL LAPTOPS */
+@media (max-width: 1024px) {
+    .title {
+        gap: 40px;
+        margin-top: 80px;
+    }
+
+    .title h2 {
+        font-size: clamp(42px, 6.5vw, 68px);
+    }
+
+    .selectionWrapper {
+        margin-right: 24px;
+        margin-left: 24px;
+    }
+
+    .productsWindow {
+        margin-right: 24px;
+        margin-left: 24px;
+        gap: 24px;
+    }
+
+    .productImage {
+        height: clamp(300px, 42vw, 400px);
+    }
+}
+
+/* TABLETS */
+@media (max-width: 768px) {
+    .container {
+        min-height: auto;
+    }
+
+    .title {
+        margin-top: 65px;
+        gap: 24px;
+        justify-content: flex-start;
+    }
+
+    .title h2 {
+        font-size: clamp(38px, 6vw, 52px);
+    }
+
+    .description p {
+        font-size: 12px;
+    }
+
+    .selectionWrapper {
+        margin: 32px 20px 0;
+    }
+
+    .selection {
+        flex-wrap: wrap;
+        padding: 22px 4px;
+        gap: 18px;
+    }
+
+    .searchField {
+        gap: 12px;
+    }
+
+    .filters {
+        gap: 8px;
+    }
+
+    .allBtn,
+    .footwearBtn,
+    .accessoriesBtn {
+        padding: 9px 13px;
+    }
+
+    .productsWindow {
+        margin: 24px 20px 0;
+        gap: 24px 18px;
+    }
+
+    .productImage {
+        height: clamp(260px, 48vw, 350px);
+    }
+
+    .productImage span {
+        top: 12px;
+        left: 12px;
+        font-size: 11px;
+    }
+
+    .productData {
+        gap: 8px;
+        padding-top: 12px;
+    }
+
+    .data1 h3 {
+        font-size: 15px;
+    }
+
+    .data1 p,
+    .data2 {
+        font-size: 13px;
+    }
+}
+
+/* MOBILE PHONES */
+@media (max-width: 600px) {
+    .title {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 18px;
+        margin-top: 50px;
+        padding: 0 18px;
+    }
+
+    .title h2 {
+        font-size: clamp(42px, 10vw, 60px);
+    }
+
+    .description p {
+        font-size: 12px;
+        line-height: 1.7;
+    }
+
+    .selectionWrapper {
+        margin: 30px 18px 0;
+    }
+
+    .selection {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 18px;
+        padding: 20px 0;
+    }
+
+    .searchField {
+        width: 100%;
+        gap: 12px;
+    }
+
+    .filters {
+        width: 100%;
+        gap: 8px;
+    }
+
+    .allBtn,
+    .footwearBtn,
+    .accessoriesBtn {
+        padding: 9px 14px;
+        font-size: 10px;
+    }
+
+    .productsWindow {
+        margin: 22px 18px 0;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 26px 12px;
+    }
+
+    .productImage {
+        height: auto;
+        aspect-ratio: 3 / 4;
+    }
+
+    .productImage span {
+        top: 9px;
+        left: 9px;
+        font-size: 10px;
+    }
+
+    .productImage button {
+        height: 40px;
+        bottom: 8px;
+        left: 8px;
+        right: 8px;
+        font-size: 10px;
+    }
+
+    .productData {
+        flex-direction: column;
+        gap: 8px;
+        padding-top: 12px;
+    }
+
+    .data1 h3 {
+        font-size: 14px;
+        line-height: 1.4;
+    }
+
+    .data1 p {
+        font-size: 12px;
+        line-height: 1.5;
+    }
+
+    .data2 {
+        align-items: flex-start;
+        gap: 5px;
+        font-size: 12px;
+    }
+}
+
+/* SMALL MOBILE PHONES */
+@media (max-width: 380px) {
+    .title {
+        padding: 0 14px;
+        margin-top: 40px;
+    }
+
+    .title h2 {
+        font-size: 40px;
+    }
+
+    .selectionWrapper {
+        margin-right: 14px;
+        margin-left: 14px;
+    }
+
+    .filters {
+        gap: 6px;
+    }
+
+    .allBtn,
+    .footwearBtn,
+    .accessoriesBtn {
+        padding: 8px 10px;
+        font-size: 9px;
+    }
+
+    .productsWindow {
+        margin-right: 14px;
+        margin-left: 14px;
+        gap: 24px 10px;
+    }
+
+    .productData {
+        gap: 6px;
+    }
+
+    .data1 h3 {
+        font-size: 12px;
+    }
+
+    .data1 p,
+    .data2 {
+        font-size: 11px;
+    }
+
+    .productImage button {
+        left: 6px;
+        right: 6px;
+        bottom: 6px;
+        height: 36px;
+        font-size: 9px;
+    }
+}

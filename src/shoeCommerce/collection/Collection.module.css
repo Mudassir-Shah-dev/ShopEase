@@ -1,0 +1,679 @@
+
+.container {
+    background: #f3f3f1;
+    min-height: 920px;
+    display: flex;
+    box-sizing: border-box;
+}
+
+/* COLLECTION IMAGE CARD */
+.collectionCard {
+    background: #e8e8e6;
+    height: 820px;
+    width: 40%;
+    min-width: 0;
+    margin: 15px 20px;
+    padding: 40px;
+    box-sizing: border-box;
+    overflow: hidden;
+    flex-shrink: 0;
+
+    animation: collectionReveal 0.8s ease-out both;
+}
+
+/* Product information */
+.info {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 0 15px;
+
+    animation: collectionFadeUp 0.7s ease-out 0.15s both;
+}
+
+.info span {
+    font-size: 9px;
+}
+
+/* Product image */
+.imageWrapper {
+    width: 100%;
+    height: 80%;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.imageWrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+
+    animation: productImageReveal 1s ease-out 0.1s both;
+    transition: transform 650ms cubic-bezier(0.2, 0.65, 0.3, 1);
+}
+
+.collectionCard:hover .imageWrapper img {
+    transform: scale(1.035);
+}
+
+/* PRODUCT FORM */
+.form {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    min-width: 0;
+    align-items: stretch;
+    margin-top: 150px;
+    padding: 30px;
+    gap: 20px;
+    height: auto;
+    box-sizing: border-box;
+
+    animation: collectionFadeUp 0.8s ease-out 0.15s both;
+}
+
+.data1 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    min-width: 0;
+}
+
+.data1 h2 {
+    font-family: "Manrope", sans-serif;
+    font-size: clamp(58px, 6vw, 96px);
+    font-weight: 500;
+    overflow-wrap: break-word;
+}
+
+/* FINISH AND SIZE OPTIONS */
+.data2 {
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    margin-top: 30px;
+}
+
+.options {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    width: 100%;
+    box-sizing: border-box;
+    padding-block: 35px;
+}
+
+.btn {
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 10px;
+    gap: 10px;
+}
+
+.btn button {
+    min-width: 0;
+    height: 39px;
+    padding: 0 12px;
+    border: 1px solid #ccc;
+    display: flex;
+    align-items: center;
+    gap: 9px;
+    background: transparent;
+    font-size: 10px;
+    cursor: pointer;
+    white-space: nowrap;
+
+    transition:
+        border-color 200ms ease,
+        background 200ms ease,
+        transform 200ms ease;
+}
+
+.btn button:hover {
+    border-color: #777;
+    transform: translateY(-1px);
+}
+
+.btn button.selectedFinish {
+    border-color: black;
+}
+
+.bone,
+.onyx {
+    width: 13px;
+    height: 13px;
+    border: 1px solid #aaa;
+    border-radius: 50%;
+    flex-shrink: 0;
+}
+
+.bone {
+    background: #e8e5dc;
+}
+
+/* SIZE SELECTOR */
+.sizeHeadings {
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    font-size: 11px;
+}
+
+.sizeHeadings button {
+    padding: 0;
+    border: 0;
+    border-bottom: 1px solid #888;
+    background: none;
+    font-size: 9px;
+    cursor: pointer;
+    transition: border-color 200ms ease;
+}
+
+.sizeHeadings button:hover {
+    border-color: black;
+}
+
+.sizes {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.sizes button {
+    width: 46px;
+    height: 42px;
+    flex-shrink: 0;
+    border: 1px solid #ccc;
+    background: transparent;
+    font-size: 10px;
+    cursor: pointer;
+
+    transition:
+        border-color 200ms ease,
+        background 200ms ease,
+        color 200ms ease,
+        transform 200ms ease;
+}
+
+.sizes button:hover {
+    border-color: #555;
+    transform: translateY(-1px);
+}
+
+.sizes button.selected {
+    border-color: black;
+}
+
+/* QUANTITY */
+.quantityInfo {
+    margin: 16px 0 34px;
+    display: grid;
+    grid-template-columns: 110px minmax(0, 1fr);
+    gap: 10px;
+}
+
+.quantityChecker {
+    min-height: 54px;
+    border: 1px solid #bbb;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    text-align: center;
+    font-size: 12px;
+}
+
+.quantityChecker button {
+    height: 100%;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    transition:
+        background 180ms ease,
+        color 180ms ease;
+}
+
+.quantityChecker button:hover {
+    background: #e5e5e2;
+}
+
+/* ADD TO CART */
+.primaryBtn {
+    min-height: 54px;
+    width: 187px;
+    max-width: 100%;
+    box-sizing: border-box;
+    padding: 0 24px;
+    border: 1px solid #0a0a0a;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    color: #fff;
+    background: #0a0a0a;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+
+    transition:
+        color 200ms ease,
+        background 200ms ease,
+        transform 200ms ease;
+}
+
+.primaryBtn:hover {
+    background: #fff;
+    color: #0a0a0a;
+    transform: translateY(-2px);
+}
+
+.primaryBtn:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* PRODUCT DETAILS */
+.detailList {
+    margin: 0;
+    font-size: 9px;
+}
+
+.detail1,
+.detail2,
+.detail3 {
+    display: flex;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 10px 0;
+    border-top: 1px solid #d5d5d5;
+    font-family: "DM Sans", sans-serif;
+}
+
+/* ENTRANCE ANIMATIONS */
+@keyframes collectionReveal {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes collectionFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes productImageReveal {
+    from {
+        opacity: 0;
+        transform: scale(1.06);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* ACCESSIBILITY */
+@media (prefers-reduced-motion: reduce) {
+    .collectionCard,
+    .info,
+    .form,
+    .imageWrapper img {
+        animation: none;
+    }
+
+    .imageWrapper img,
+    .btn button,
+    .sizeHeadings button,
+    .sizes button,
+    .quantityChecker button,
+    .primaryBtn {
+        transition: none;
+    }
+}
+
+/* LARGE TABLETS AND SMALL LAPTOPS */
+@media (max-width: 1024px) {
+    .container {
+        min-height: auto;
+    }
+
+    .collectionCard {
+        width: 46%;
+        height: 720px;
+        margin: 15px;
+        padding: 28px;
+    }
+
+    .imageWrapper {
+        height: 78%;
+    }
+
+    .form {
+        width: 54%;
+        margin-top: 100px;
+        padding: 24px;
+        gap: 16px;
+    }
+
+    .data1 h2 {
+        font-size: clamp(48px, 6vw, 68px);
+    }
+
+    .data1 {
+        gap: 16px;
+    }
+
+    .data2 {
+        margin-top: 20px;
+    }
+
+    .options {
+        gap: 12px;
+        padding-block: 26px;
+    }
+
+    .btn {
+        gap: 6px;
+    }
+
+    .btn button {
+        padding: 0 8px;
+        gap: 6px;
+    }
+
+    .sizes {
+        gap: 6px;
+    }
+
+    .sizes button {
+        width: 40px;
+        height: 38px;
+    }
+
+    .quantityInfo {
+        grid-template-columns: 100px minmax(0, 1fr);
+        margin-bottom: 24px;
+    }
+}
+
+/* TABLETS */
+@media (max-width: 768px) {
+    .container {
+        align-items: flex-start;
+    }
+
+    .collectionCard {
+        width: 45%;
+        height: 600px;
+        margin: 12px;
+        padding: 20px;
+    }
+
+    .info {
+        padding: 0 5px;
+        gap: 8px;
+    }
+
+    .info span {
+        font-size: 8px;
+    }
+
+    .imageWrapper {
+        height: 76%;
+        margin-top: 16px;
+    }
+
+    .form {
+        width: 55%;
+        margin-top: 60px;
+        padding: 18px;
+        gap: 14px;
+    }
+
+    .data1 h2 {
+        font-size: clamp(40px, 6vw, 54px);
+    }
+
+    .data1 {
+        gap: 12px;
+    }
+
+    .data2 {
+        margin-top: 12px;
+    }
+
+    .options {
+        flex-direction: column;
+        gap: 18px;
+        padding-block: 22px;
+    }
+
+    .btn {
+        gap: 8px;
+    }
+
+    .btn button {
+        padding: 0 10px;
+    }
+
+    .sizes {
+        gap: 6px;
+    }
+
+    .sizes button {
+        width: 38px;
+        height: 36px;
+    }
+
+    .quantityInfo {
+        grid-template-columns: 90px minmax(0, 1fr);
+        gap: 8px;
+        margin: 12px 0 24px;
+    }
+
+    .quantityChecker {
+        min-height: 48px;
+    }
+
+    .primaryBtn {
+        width: 180px;
+        min-height: 50px;
+        padding: 0 16px;
+        gap: 12px;
+    }
+}
+
+/* MOBILE PHONES */
+@media (max-width: 600px) {
+    .container {
+        flex-direction: column;
+        min-height: auto;
+        padding: 0 18px 40px;
+    }
+
+    .collectionCard {
+        width: 100%;
+        height: auto;
+        margin: 20px 0 0;
+        padding: 22px;
+    }
+
+    .info {
+        margin-top: 8px;
+        padding: 0 4px;
+    }
+
+    .info span {
+        font-size: 9px;
+    }
+
+    .imageWrapper {
+        width: 100%;
+        height: auto;
+        aspect-ratio: 4 / 5;
+        margin-top: 18px;
+    }
+
+    .form {
+        width: 100%;
+        margin-top: 36px;
+        padding: 0;
+        gap: 18px;
+    }
+
+    .data1 {
+        gap: 14px;
+    }
+
+    .data1 h2 {
+        font-size: clamp(48px, 10vw, 66px);
+        line-height: 0.95;
+    }
+
+    .data2 {
+        margin-top: 12px;
+    }
+
+    .options {
+        flex-direction: column;
+        gap: 24px;
+        padding-block: 24px;
+    }
+
+    .btn {
+        gap: 10px;
+    }
+
+    .btn button {
+        min-width: 95px;
+        padding: 0 12px;
+    }
+
+    .sizeHeadings {
+        margin-bottom: 14px;
+    }
+
+    .sizes {
+        gap: 8px;
+    }
+
+    .sizes button {
+        width: 44px;
+        height: 40px;
+    }
+
+    .quantityInfo {
+        grid-template-columns: 110px minmax(0, 1fr);
+        gap: 10px;
+        margin: 14px 0 26px;
+    }
+
+    .quantityChecker {
+        min-height: 52px;
+    }
+
+    .primaryBtn {
+        width: 187px;
+        min-height: 54px;
+    }
+
+    .detailList {
+        font-size: 10px;
+    }
+
+    .detail1,
+    .detail2,
+    .detail3 {
+        padding: 12px 0;
+    }
+}
+
+/* SMALL MOBILE PHONES */
+@media (max-width: 380px) {
+    .container {
+        padding: 0 14px 30px;
+    }
+
+    .collectionCard {
+        padding: 16px;
+    }
+
+    .info span {
+        font-size: 8px;
+    }
+
+    .form {
+        margin-top: 28px;
+    }
+
+    .data1 h2 {
+        font-size: 44px;
+    }
+
+    .options {
+        gap: 20px;
+        padding-block: 20px;
+    }
+
+    .btn {
+        gap: 7px;
+    }
+
+    .btn button {
+        min-width: 0;
+        padding: 0 9px;
+        gap: 6px;
+        font-size: 9px;
+    }
+
+    .bone,
+    .onyx {
+        width: 11px;
+        height: 11px;
+    }
+
+    .sizes {
+        gap: 6px;
+    }
+
+    .sizes button {
+        width: 38px;
+        height: 36px;
+    }
+
+    .quantityInfo {
+        grid-template-columns: 95px minmax(0, 1fr);
+        gap: 8px;
+    }
+
+    .quantityChecker {
+        min-height: 48px;
+        font-size: 11px;
+    }
+
+    .primaryBtn {
+        width: 100%;
+        max-width: 220px;
+    }
+}
